@@ -1,0 +1,221 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="index.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <img class="brand-logo" src="https://marketplace.canva.com/EAF6ICBwJ7U/1/0/1600w/canva-blue-and-white-circle-retail-logo-jWnP4G7rjfI.jpg" alt="E-commerce Logo">
+
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">Home</a></li>
+                <li><a href="badges.html">About</a></li>
+                <li><a href="collapsible.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="slider">
+        <ul class="slides">
+            <li>
+                <img src="https://static.vecteezy.com/system/resources/previews/004/707/493/non_2x/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-vector.jpg">
+                <div class="caption center-align">
+                    <h1>This is our big Deal</h1>
+                    <h3>Get It Soon.</h3>
+                </div>
+            </li>
+            <li>
+                <img src="https://static.vecteezy.com/system/resources/previews/004/299/813/non_2x/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-vector.jpg">
+                <div class="caption left-align">
+                    <h1>Get Your Product</h1>
+                    <h3>Electornic World.</h3>
+                </div>
+            </li>
+            <li>
+                <img src="https://t4.ftcdn.net/jpg/09/21/66/55/360_F_921665590_1gMP6zuhbZmmGIjCqyfqJBCDBU1eAxwm.jpg">
+                <div class="caption right-align">
+                    <h1>Right PLace</h1>
+                    <h3>Here's our small world.</h3>
+                </div>
+            </li>
+            <li>
+                <img src="https://t3.ftcdn.net/jpg/02/84/32/52/360_F_284325273_ei2pxwlAyg4ghLOBINFPiF1LVubbfLpA.jpg">
+                <div class="caption center-align">
+                    <h1>This is our big Deal!</h1>
+                    <h3>Here's our deal.</h3>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://koala.sh/api/image/v2-auejl-y96y4.jpg?width=1344&height=768&dream">
+                    <span class="card-title">Washing Machine</span>
+                    <a href="#modal1" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
+                        <i class="material-icons">add</i>
+                    </a>
+
+                </div>
+                <div class="card-content">
+                    <p>I am a very simple Machine.A washing machine also know as a washer is a machine that washes dirty clothes. It contains a barrel into which the clothes are placed.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://koala.sh/api/image/v2-aws8k-qehb8.jpg?width=1344&height=768&dream">
+                    <span class="card-title">Dryer</span>
+                    <a href="#modal1" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger">
+                        <i class="material-icons">add</i>
+                    </a>
+                </div>
+                <div class="card-content">
+                    <p>A clothes dryer (tumble dryer, drying machine, or simply dryer) is a powered household appliance that is used to remove moisture from a load of clothing,.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="https://static.vecteezy.com/system/resources/previews/020/650/063/non_2x/discount-special-offer-banner-on-a-black-background-free-vector.jpg">
+        </div>
+        <a class="offerBtn btn-overlay">
+            <span class="text2 btn-floating pulse" onclick="M.toast({html: 'I am a toast', completeCallback: function(){alert('Your toast was dismissed')}})">Offer</span>
+            <span class="text3">$20</span>
+        </a>
+    </div>
+
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Extended Warranty</h4>
+            <p>An extended warranty (sometimes called a 'care package') is an additional warranty that provides repair and maintenance for a specified period</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+    <div class="background-container">
+        <div class="container">
+            <div class="form-container">
+                <h4 class="center-align">Search Form</h4>
+
+                <form class="search-form">
+                    <div class="input-group">
+                        <input type="text" id="pincode" class="search-field" placeholder="Enter Pincode">
+                    </div>
+                    <div class="input-group">
+                        <button type="submit" id="myButton" class="btn"><i class="material-icons right">send</i>
+                            Check Pincode</button>
+                    </div>
+                </form>
+
+                <div id="message"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2014 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
+    </footer>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js">
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.modal').modal();
+        });
+
+
+        $(document).ready(function() {
+            $('.slider').slider();
+        });
+
+        $(document).ready(function() {
+            $('.parallax').parallax();
+        });
+
+        $(document).ready(function() {
+            $(".search-form").submit(function(event) {
+                event.preventDefault();
+
+                var pincode = $("#pincode").val();
+                var message = "";
+                if (/^\d{5}$/.test(pincode)) {
+                    message = "The pincode is valid!";
+                } else if (pincode === "") {
+                    message = "Please enter a pincode.";
+                } else {
+                    message = "Invalid pincode. Please enter a valid 5-digit pincode.";
+                }
+
+                $("#message").text(message).css("color", "#333");
+            });
+        });
+
+
+        $(document).ready(function() {
+            $('#myButton').click(function() {
+                var className = $("#myButton").attr("class");
+                if (className == 'btn') {
+                    $(this).removeClass('btn');
+                    $(this).addClass('btn-large');
+                    $(this).css({
+                        'background-color': '#ff8a80'
+                    });
+                } else if (className == 'btn-large') {
+                    $(this).removeClass('btn-large');
+                    $(this).addClass('btn');
+                    $(this).css({
+                        'background-color': '#1a1a1a'
+                    });
+                }
+
+            });
+        });
+    </script>
+
+</body>
+
+</html>
