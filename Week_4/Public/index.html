@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert User</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="center-align">Insert User into MongoDB</h1>
+
+        <div class="row">
+            <form id="userForm" class="col s12 card-panel">
+                <div class="input-field">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="input-field">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="input-field">
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="center-align">
+                    <button type="submit" id="submitButton" class="btn waves-effect waves-light">Submit</button>
+                    <button type="button" id="updateButton" class="btn waves-effect waves-light orange" style="display: none;">Update</button>
+                </div>
+            </form>
+        </div>
+
+        <h2 class="center-align">User Details</h2>
+        <div class="row center-align">
+            <button id="fetchUsers" class="btn waves-effect waves-light">Fetch Users</button>
+        </div>
+
+        <table class="highlight centered striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+            <tbody id="usersTableBody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let currentUserId = null;
+
+        const form = document.getElementById("userForm");
+        const submitButton = document.getElementById("submitButton");
+        const updateButton = document.getElementById("updateButton");
+        const fetchUsersButton = document.getElementById("fetchUsers");
+
+        form.addEventListener("submit", async(event) => {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+
+            try {
+                const response = await fetch("/add-user", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        phone
+                    }),
+                });
+                if (response.ok) {
+                    M.toast({
+                        html: "User added successfully!"
+                    });
+                    form.reset();
+                    fetchUsersButton.click();
+                } else {
+                    const errorText = await response.text();
+                    M.toast({
+                        html: "Error: " + errorText
+                    });
+                }
+            } catch (error) {
+                console.error("Error adding user:", error);
+                M.toast({
+                    html: "An error occurred."
+                });
+            }
+        });
+
+        updateButton.addEventListener("click", async() => {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+
+            if (!currentUserId) {
+                M.toast({
+                    html: "No user selected for update"
+                });
+                return;
+            }
+
+            try {
+                const response = await fetch(`/update-user/${currentUserId}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        phone
+                    }),
+                });
+
+                if (response.ok) {
+                    M.toast({
+                        html: "User updated successfully!"
+                    });
+                    form.reset();
+                    currentUserId = null;
+                    submitButton.style.display = "inline";
+                    updateButton.style.display = "none";
+                    fetchUsersButton.click();
+                } else {
+                    const errorText = await response.text();
+                    M.toast({
+                        html: "Error: " + errorText
+                    });
+                }
+            } catch (error) {
+                console.error("Error updating user:", error);
+                M.toast({
+                    html: "An error occurred."
+                });
+            }
+        });
+
+        fetchUsersButton.addEventListener("click", async() => {
+            try {
+                const response = await fetch("/get-users");
+                if (response.ok) {
+                    const users = await response.json();
+                    const tableBody = document.getElementById("usersTableBody");
+                    tableBody.innerHTML = "";
+
+                    users.forEach(user => {
+                        const row = `
+                            <tr>
+                                <td>${user.name}</td>
+                                <td>${user.email}</td>
+                                <td>${user.phone}</td>
+                                <td><button class="btn red" onclick="deleteUser('${user._id}')">Delete</button></td>
+                                <td><button class="btn orange" onclick="editUser('${user._id}', '${user.name}', '${user.email}', '${user.phone}')">Edit</button></td>
+                            </tr>`;
+                        tableBody.innerHTML += row;
+                    });
+                } else {
+                    M.toast({
+                        html: "Failed to fetch users"
+                    });
+                }
+            } catch (error) {
+                console.error("Error fetching users:", error);
+                M.toast({
+                    html: "An error occurred."
+                });
+            }
+        });
+
+        async function deleteUser(userId) {
+            try {
+                const response = await fetch(`/delete-user/${userId}`, {
+                    method: "DELETE"
+                });
+                if (response.ok) {
+                    M.toast({
+                        html: "User deleted successfully!"
+                    });
+                    fetchUsersButton.click();
+                } else {
+                    const errorText = await response.text();
+                    M.toast({
+                        html: "Error: " + errorText
+                    });
+                }
+            } catch (error) {
+                console.error("Error deleting user:", error);
+                M.toast({
+                    html: "An error occurred."
+                });
+            }
+        }
+
+        function editUser(userId, name, email, phone) {
+            currentUserId = userId;
+            document.getElementById("name").value = name;
+            document.getElementById("email").value = email;
+            document.getElementById("phone").value = phone;
+            submitButton.style.display = "none";
+            updateButton.style.display = "inline";
+        }
+    </script>
+</body>
+
+</html>

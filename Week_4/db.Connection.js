@@ -1,14 +1,10 @@
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-// const url = "mongodb+srv://emmalujosephwork:u_A4k.Ckn9QD_Tj@cluster0.vux0o.mongodb.net/"
-
-
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
 // Replace the placeholder with your Atlas connection string
-const uri = "mongodb+srv://emmalujosephwork:u_A4k.Ckn9QD_Tj@cluster0.vux0o.mongodb.net/";
+const url = "mongodb://localhost:27017/";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
+const client = new MongoClient(url, {
     serverApi: {
         version: ServerApiVersion.v1,
         strict: true,
@@ -35,15 +31,13 @@ run().catch(console.dir);
 
 
 
-
-// const client = new MongoClient(url, {
-//     serverApi: {
-//         version: ServerApiVersion.v1,
-//         strict: true,
-//         deprecationErrors: true,
-//     }
-// });
-
-// client.connect();
-
-// module.exports = client;
+MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("localSoftwaredb");
+    var myobj = { name: "Company Inc", address: "Highway 37" };
+    dbo.collection("localSoftwareCollection").insertOne(myobj, function(err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        db.close();
+    });
+});
