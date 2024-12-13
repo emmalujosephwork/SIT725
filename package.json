@@ -1,7 +1,14 @@
 {
-  "dependencies": {
-    "express": "^4.21.1",
-    "materialize-css": "^1.0.0-rc.2",
-    "mongodb": "^6.11.0"
-  }
+    "dependencies": {
+        "body-parse": "^0.1.0",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "materialize-css": "^1.0.0-rc.2",
+        "moch": "^0.0.1",
+        "mocha": "^11.0.1",
+        "mongodb": "^6.12.0"
+    },
+    "scripts": {
+        "test": "mocha"
+    }
 }

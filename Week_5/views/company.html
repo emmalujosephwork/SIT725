@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Management</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <h1>Company Management</h1>
+
+    <!-- Navigation Button -->
+    <div>
+        <button onclick="location.href='/';">Back to User Management</button>
+    </div>
+
+    <!-- Company List -->
+    <div id="company-list">
+        <h2>All Companies</h2>
+        <ul id="companies">
+            <!-- Companies will be dynamically loaded here -->
+        </ul>
+    </div>
+
+    <!-- Add Company Form -->
+    <h2>Add New Company</h2>
+    <form id="add-company-form">
+        <label>
+            Name:
+            <input type="text" id="company-name" required>
+        </label>
+        <label>
+            Address:
+            <input type="text" id="company-address" required>
+        </label>
+        <label>
+            PIN:
+            <input type="text" id="company-pin" required>
+        </label>
+        <button type="submit">Add Company</button>
+    </form>
+
+    <!-- Edit Company Form -->
+    <div id="edit-company-form" style="display: none;">
+        <h2>Edit Company</h2>
+        <form>
+            <label>
+                Name:
+                <input type="text" id="edit-company-name" required>
+            </label>
+            <label>
+                Address:
+                <input type="text" id="edit-company-address" required>
+            </label>
+            <label>
+                PIN:
+                <input type="text" id="edit-company-pin" required>
+            </label>
+            <button type="button" id="save-company-changes">Save</button>
+            <button type="button" id="cancel-company-edit">Cancel</button>
+        </form>
+    </div>
+
+    <script src="/companyScripts.js"></script>
+</body>
+
+</html>
