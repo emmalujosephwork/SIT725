@@ -5,10 +5,14 @@
         "express": "^4.21.2",
         "materialize-css": "^1.0.0-rc.2",
         "moch": "^0.0.1",
-        "mocha": "^11.0.1",
         "mongodb": "^6.12.0"
     },
     "scripts": {
-        "test": "mocha"
+        "test": "mocha 'Week_6/test/**/*.test.js'"
+    },
+    "devDependencies": {
+        "chai": "^5.1.2",
+        "mocha": "^11.0.1",
+        "sinon": "^19.0.2"
     }
 }
