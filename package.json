@@ -5,7 +5,9 @@
         "express": "^4.21.2",
         "materialize-css": "^1.0.0-rc.2",
         "moch": "^0.0.1",
-        "mongodb": "^6.12.0"
+        "mongodb": "^6.12.0",
+        "socket.io": "^4.8.1",
+        "socket.io-client": "^4.8.1"
     },
     "scripts": {
         "test": "mocha 'Week_6/test/**/*.test.js'"
