@@ -46,7 +46,7 @@
                 </tr>
             </thead>
             <tbody id="companies">
-                <!-- Companies will be dynamically loaded here by the fetchUsers function -->
+                <!-- Companies will be dynamically loaded here by the fetchCompanies function -->
             </tbody>
         </table>
     </div>
@@ -76,6 +76,31 @@
                     <button class="btn waves-effect waves-light" type="submit" name="action">Add Company</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Edit Company Form -->
+    <div id="edit-company-form" style="display: none; margin-top: 20px;">
+        <h2>Edit Company</h2>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="edit-company-name" type="text" class="validate" required>
+                <label for="edit-company-name" class="active">Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="edit-company-pin" type="text" class="validate" required>
+                <label for="edit-company-pin" class="active">PIN</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="edit-company-address" type="text" class="validate" required>
+                <label for="edit-company-address" class="active">Address</label>
+            </div>
+        </div>
+        <div class="row">
+            <button id="save-company-changes" class="btn waves-effect waves-light">Save Changes</button>
+            <button id="cancel-company-edit" class="btn waves-effect waves-light red">Cancel</button>
         </div>
     </div>
 
