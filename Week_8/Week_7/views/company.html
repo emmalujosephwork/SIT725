@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Management</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo" style="margin-left: 20px;">Logo</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="collection">
+        <a href="/" class="collection-item">Back to User Management</a>
+    </div>
+
+    <!-- Sidenav for Mobile -->
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+    </ul>
+
+    <div id="user-list">
+        <h2>All Companies</h2>
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>PIN</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="companies">
+                <!-- Companies will be dynamically loaded here by the fetchCompanies function -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Company Form -->
+    <div class="container">
+        <h2>Add New Company</h2>
+        <div class="row">
+            <form class="col s12" id="add-company-form">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="company-name" type="text" class="validate" required>
+                        <label for="company-name" class="active">Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="company-pin" type="text" class="validate" required>
+                        <label for="company-pin" class="active">PIN</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="company-address" type="text" class="validate" required>
+                        <label for="company-address" class="active">Address</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Add Company</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Company Form -->
+    <div id="edit-company-form" style="display: none; margin-top: 20px;">
+        <h2>Edit Company</h2>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="edit-company-name" type="text" class="validate" required>
+                <label for="edit-company-name" class="active">Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="edit-company-pin" type="text" class="validate" required>
+                <label for="edit-company-pin" class="active">PIN</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="edit-company-address" type="text" class="validate" required>
+                <label for="edit-company-address" class="active">Address</label>
+            </div>
+        </div>
+        <div class="row">
+            <button id="save-company-changes" class="btn waves-effect waves-light">Save Changes</button>
+            <button id="cancel-company-edit" class="btn waves-effect waves-light red">Cancel</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/companyScripts.js"></script>
+</body>
+
+</html>
